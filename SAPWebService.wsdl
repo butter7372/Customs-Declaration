@@ -1,0 +1,238 @@
+<wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsoap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:tns="urn:sap-com:document:sap:rfc:functions" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+   <wsdl:documentation>
+      <sidl:sidl xmlns:sidl="http://www.sap.com/2007/03/sidl"/>
+   </wsdl:documentation>
+   <wsp:UsingPolicy wsdl:required="false"/>
+   <wsp:Policy wsu:Id="BN__ZPO_SO_Display">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true"/>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="BN__ZPO_SO_Display_soap12">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedMimeSerialization xmlns:saptrnbnd="http://schemas.xmlsoap.org/ws/2004/09/policy/optimizedmimeserialization" wsp:Optional="true"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true"/>
+         </wsp:All>
+         <wsp:All>
+            <sapattahnd:Enabled xmlns:sapattahnd="http://www.sap.com/710/features/attachment/">false</sapattahnd:Enabled>
+            <saptrnbnd:OptimizedXMLTransfer xmlns:saptrnbnd="http://www.sap.com/webas/710/soap/features/transportbinding/" uri="http://xml.sap.com/2006/11/esi/esp/binxml" wsp:Optional="true"/>
+            <wsaw:UsingAddressing xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" wsp:Optional="true"/>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="IF__ZPO_SO_Display">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <sapsession:Session xmlns:sapsession="http://www.sap.com/webas/630/soap/features/session/">
+               <sapsession:enableSession>false</sapsession:enableSession>
+            </sapsession:Session>
+            <sapcentraladmin:CentralAdministration xmlns:sapcentraladmin="http://www.sap.com/webas/700/soap/features/CentralAdministration/" wsp:Optional="true">
+               <sapcentraladmin:BusinessApplicationID>F4E9D4C288401ED9AFFD7F4E75FD1570</sapcentraladmin:BusinessApplicationID>
+            </sapcentraladmin:CentralAdministration>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsp:Policy wsu:Id="OP__Z_RFC_ORDERDISPLAY">
+      <wsp:ExactlyOne>
+         <wsp:All>
+            <saptrhnw05:required xmlns:saptrhnw05="http://www.sap.com/NW05/soap/features/transaction/">no</saptrhnw05:required>
+            <sapcomhnd:enableCommit xmlns:sapcomhnd="http://www.sap.com/NW05/soap/features/commit/">false</sapcomhnd:enableCommit>
+            <sapblock:enableBlocking xmlns:sapblock="http://www.sap.com/NW05/soap/features/blocking/">true</sapblock:enableBlocking>
+            <saprmnw05:enableWSRM xmlns:saprmnw05="http://www.sap.com/NW05/soap/features/wsrm/">false</saprmnw05:enableWSRM>
+         </wsp:All>
+      </wsp:ExactlyOne>
+   </wsp:Policy>
+   <wsdl:types>
+      <xsd:schema attributeFormDefault="qualified" targetNamespace="urn:sap-com:document:sap:rfc:functions">
+         <xsd:simpleType name="char10">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="10"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="char18">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="18"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="char40">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="40"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="cuky5">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="5"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="curr11.2">
+            <xsd:restriction base="xsd:decimal">
+               <xsd:totalDigits value="11"/>
+               <xsd:fractionDigits value="2"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="curr15.2">
+            <xsd:restriction base="xsd:decimal">
+               <xsd:totalDigits value="15"/>
+               <xsd:fractionDigits value="2"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="numeric5">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="5"/>
+               <xsd:pattern value="\d*"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="numeric6">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="6"/>
+               <xsd:pattern value="\d*"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="quantum13.3">
+            <xsd:restriction base="xsd:decimal">
+               <xsd:totalDigits value="13"/>
+               <xsd:fractionDigits value="3"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="quantum15.3">
+            <xsd:restriction base="xsd:decimal">
+               <xsd:totalDigits value="15"/>
+               <xsd:fractionDigits value="3"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:simpleType name="unit3">
+            <xsd:restriction base="xsd:string">
+               <xsd:maxLength value="3"/>
+            </xsd:restriction>
+         </xsd:simpleType>
+         <xsd:complexType name="ZSOINFO">
+            <xsd:sequence>
+               <xsd:element name="VBELN" type="tns:char10"/>
+               <xsd:element name="POSNR" type="tns:numeric6"/>
+               <xsd:element name="NAME1" type="tns:char40"/>
+               <xsd:element name="MATNR" type="tns:char18"/>
+               <xsd:element name="ARKTX" type="tns:char40"/>
+               <xsd:element name="KWMENG" type="tns:quantum15.3"/>
+               <xsd:element name="VRKME" type="tns:unit3"/>
+               <xsd:element name="NETPR" type="tns:curr11.2"/>
+               <xsd:element name="NETWR" type="tns:curr15.2"/>
+               <xsd:element name="WAERK" type="tns:cuky5"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="ZPOINFO">
+            <xsd:sequence>
+               <xsd:element name="PO_NUMBER" type="tns:char10"/>
+               <xsd:element name="VENDOR" type="tns:char10"/>
+               <xsd:element name="PO_ITEM" type="tns:numeric5"/>
+               <xsd:element name="MATERIAL" type="tns:char18"/>
+               <xsd:element name="MAT_DESC" type="tns:char40"/>
+               <xsd:element name="PO_QTY" type="tns:quantum13.3"/>
+               <xsd:element name="MEINS" type="tns:unit3"/>
+               <xsd:element name="NETPR" type="tns:curr11.2"/>
+               <xsd:element name="NETWR" type="tns:curr15.2"/>
+               <xsd:element name="WAERS" type="tns:cuky5"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TABLE_OF_ZSOINFO">
+            <xsd:sequence>
+               <xsd:element name="item" type="tns:ZSOINFO" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:complexType name="TABLE_OF_ZPOINFO">
+            <xsd:sequence>
+               <xsd:element name="item" type="tns:ZPOINFO" minOccurs="0" maxOccurs="unbounded"/>
+            </xsd:sequence>
+         </xsd:complexType>
+         <xsd:element name="Z_RFC_ORDERDISPLAY">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="ET_DETAIL" type="tns:TABLE_OF_ZSOINFO"/>
+                  <xsd:element name="ET_PO" type="tns:TABLE_OF_ZPOINFO"/>
+                  <xsd:element name="IM_VBELN" type="tns:char10"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+         <xsd:element name="Z_RFC_ORDERDISPLAYResponse">
+            <xsd:complexType>
+               <xsd:sequence>
+                  <xsd:element name="ET_DETAIL" type="tns:TABLE_OF_ZSOINFO"/>
+                  <xsd:element name="ET_PO" type="tns:TABLE_OF_ZPOINFO"/>
+               </xsd:sequence>
+            </xsd:complexType>
+         </xsd:element>
+      </xsd:schema>
+   </wsdl:types>
+   <wsdl:message name="Z_RFC_ORDERDISPLAY">
+      <wsdl:part name="parameters" element="tns:Z_RFC_ORDERDISPLAY"/>
+   </wsdl:message>
+   <wsdl:message name="Z_RFC_ORDERDISPLAYResponse">
+      <wsdl:part name="parameter" element="tns:Z_RFC_ORDERDISPLAYResponse"/>
+   </wsdl:message>
+   <wsdl:portType name="ZPO_SO_Display">
+      <wsdl:documentation>
+         <sapdoc:sapdoc xmlns:sapdoc="urn:sap:esi:documentation">
+            <sapdoc:docitem docURL="http://IDC1-S-R3PRD.tagal.com.cn:8000/sap/bc/esdt/docu/sd_text?sap-client=800&amp;sd_name=ZPO_SO_DISPLAY"/>
+            <sapdoc:docitem applicationComponent="BC"/>
+         </sapdoc:sapdoc>
+      </wsdl:documentation>
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#IF__ZPO_SO_Display"/>
+      </wsp:Policy>
+      <wsdl:operation name="Z_RFC_ORDERDISPLAY">
+         <wsp:Policy>
+            <wsp:PolicyReference URI="#OP__Z_RFC_ORDERDISPLAY"/>
+         </wsp:Policy>
+         <wsdl:input message="tns:Z_RFC_ORDERDISPLAY"/>
+         <wsdl:output message="tns:Z_RFC_ORDERDISPLAYResponse"/>
+      </wsdl:operation>
+   </wsdl:portType>
+   <wsdl:binding name="ZPO_SO_Display" type="tns:ZPO_SO_Display">
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#BN__ZPO_SO_Display"/>
+      </wsp:Policy>
+      <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="Z_RFC_ORDERDISPLAY">
+         <soap:operation soapAction="urn:sap-com:document:sap:rfc:functions:ZPO_SO_Display:Z_RFC_ORDERDISPLAYRequest" style="document"/>
+         <wsdl:input>
+            <soap:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <soap:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:binding name="ZPO_SO_Display_soap12" type="tns:ZPO_SO_Display">
+      <wsp:Policy>
+         <wsp:PolicyReference URI="#BN__ZPO_SO_Display_soap12"/>
+      </wsp:Policy>
+      <wsoap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document"/>
+      <wsdl:operation name="Z_RFC_ORDERDISPLAY">
+         <wsoap12:operation soapAction="urn:sap-com:document:sap:rfc:functions:ZPO_SO_Display:Z_RFC_ORDERDISPLAYRequest" style="document"/>
+         <wsdl:input>
+            <wsoap12:body use="literal"/>
+         </wsdl:input>
+         <wsdl:output>
+            <wsoap12:body use="literal"/>
+         </wsdl:output>
+      </wsdl:operation>
+   </wsdl:binding>
+   <wsdl:service name="ZPO_SO_Display">
+      <wsdl:port name="ZPO_SO_Display" binding="tns:ZPO_SO_Display">
+         <soap:address location="http://IDC1-S-R3PRD.tagal.com.cn:8000/sap/bc/srt/rfc/sap/zpo_so_display/800/zpo_so_display/zpo_so_display"/>
+      </wsdl:port>
+      <wsdl:port name="ZPO_SO_Display_soap12" binding="tns:ZPO_SO_Display_soap12">
+         <wsoap12:address location="http://IDC1-S-R3PRD.tagal.com.cn:8000/sap/bc/srt/rfc/sap/zpo_so_display/800/zpo_so_display/zpo_so_display"/>
+      </wsdl:port>
+   </wsdl:service>
+</wsdl:definitions>

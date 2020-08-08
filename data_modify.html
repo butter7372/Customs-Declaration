@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<?php
+			error_reporting(0);
+			session_start();
+			if(!isset($_SESSION['admin'])){
+    		header("Location:login.html");
+    		exit();
+		}
+ ?>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<base href="" target="_blank" />
+		<script type="text/javascript">
+		</script>
+		<title>TAGAL海关报关信息系统</title>
+		<style type="text/css">
+			*{
+				margin: 0px;
+				padding: 0px;
+			}
+			.header{
+				width: 100%;
+				height: 80px;
+				background-color: #006cb7;
+			}
+ 			.title{
+				font-size: 50px;
+				margin-left: 10px;
+				color: black;
+				border: none;
+				line-height: 80px;
+			}
+			.logo{
+				float: right;
+				width:80px;
+				margin-right: 10px;
+			}
+			.menu{
+				width: 1800px;
+				height: 40px;
+				margin:0 auto;
+				background-color: #f9f9f9;
+			}
+			.menu_list{
+				list-style: none;
+				margin-left: 45%;
+				line-height: 40px;
+				font-size: 30px;
+			}
+			.search{
+				width: 1800px;
+				height: 40px;
+				margin:0 auto;
+				line-height: 40px;
+				font-size: 20px;
+			}
+			.input_text1{					
+				float: left;
+				height: 25px;
+				margin-right: 25px;
+				line-height: 20px;
+				font-size: 20px;
+				}
+			.search_condition{
+				float: left;
+				height: 25px;
+				margin-right: 25px;
+				text-align: center;
+				line-height: 30px;
+				font-size: 20px;	
+			}
+			.input_text2{
+				float: left;
+				height: 25px;
+				line-height: 20px;
+				font-size: 20px;
+				}
+			.input_button1{
+				float: left;
+				width: 100px;
+				height: 30px;
+				margin-left: 10px;
+				line-height: 20px;
+				font-size: 17.5px;
+			}
+			.input_button2{
+				width: 90px;
+				height: 30px;
+				float: right;
+				margin-left: 30px;
+				text-align: center; 
+				font-size: 17px;
+			}
+			.form1{
+				width: 1800px;
+				margin: 0 auto;
+			}
+			table.table_text {
+				width: 1800px;
+				font-family: verdana,arial,sans-serif;
+				font-size:16px;
+				border-collapse: collapse;
+				}
+			table.table_text th {
+				background: #AACC99;
+				border-width: 2px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				border-style:solid;
+				border-color: black;
+			}
+			table.table_text td {
+				border-width: 2px;
+				padding: 10px;
+				border-style: solid;
+				border-color: black;
+			}
+			table.table_attach {
+				width: 1800px;
+				font-family: verdana,arial,sans-serif;
+				font-size:16px;
+				border-collapse: collapse;
+				}
+			table.table_attach th {
+				background: #AACC99;
+				border-width: 2px;
+				padding-top: 10px;
+				padding-bottom: 10px;
+				border-style:solid;
+				border-color: black;
+			}
+			table.table_attach td {
+				border-width: 2px;
+				padding: 10px;
+				border-style: solid;
+				border-color: black;
+			}			
+			.input_text3{
+				width: 150px;
+				height: 20px;
+				font-size: 16px;
+			}
+			.select_option1{
+				position: relative;
+				width: 80px;
+				text-align: center; 
+				height: 22px;
+			}
+			.form2{
+				width: 1800px;
+				margin: 0 auto;
+			}
+			.openfile1{
+				margin: 0 auto;
+				border: solid 1px;
+				width: 275px;
+				text-align: center; 
+				height: 25px;
+				font-size: 15px;
+			}
+			.table_display{
+				width: 1800px;
+				height: 400px;
+				background-color: #f9f9f9;
+				margin: 0 auto;
+/* 				border-style: solid; */
+				border-collapse: collapse;
+				border-spacing: 0;
+				table-layout: fixed;
+			}
+			.table_cell1{
+				width: 90px;
+				padding-left: 0px;
+				padding-right: 5px;
+				text-align: center;
+				font-size: 12px;
+				font-weight: bold;
+				padding-top: 20px;
+
+			}
+		</style>
+	</head>
+	<body>
+		<div class= "header">
+			<a class="title">海关报关信息系统<img src="img/tagal_logo.png"  class="logo"></a>
+		</div>
+		<div class="menu">
+			<a class="menu_list" >数据修改</a>
+		</div><br><br>
+		<form enctype="multipart/form-data" action="data_save.php" method="post" class="form1">
+			<input type="submit" id="save" value="保存" class="input_button2"><br><br>
+			<table class="table_text">
+				<tr>
+					<th>订单号</th><th>报关单号</th><th>发票号</th><th>箱单号</th><th>运单号/提单号</th><th>运费合同</th>
+					<th>运费(境外)</th><th>保险费</th><th>杂费(境外)</th><th>贸易条款</th><th>报关人</th>
+				</tr>
+				<tr>
+					<td><input type="text" id="SAP_order" name="SAP_order" class="input_text3" required="required"></td>
+					<td><input type="text" id="declaration_number" name="declaration_number" class="input_text3" required="required"></td>
+                    <td><input type="text" id="invoice_number" name="invoice_number" class="input_text3" required="required"></td>
+                    <td><input type="text" id="package_number" name="package_number" class="input_text3" required="required"></td>
+					<td><input type="text" id="shipment_number" name="shipment_number" class="input_text3" required="required"></td>
+					<td><input type="text" id="shipment_order" name="shipment_order" class="input_text3"></td>
+					<td><input type="text" id="shipment_fee" name="shipment_fee" class="input_text3"></td>
+					<td><input type="text" id="insurance_fee" name="insurance_fee" class="input_text3"></td>
+					<td><input type="text" id="other_fee" name="other_fee" class="input_text3"></td>
+					<td><select id="IncoTerm" name="IncoTerm" class="select_option1">
+						<option></option>
+						<option>FOB</option>
+						<option>CIF</option>
+						<option>DTD</option>
+					</select></td>
+					<td><select id="declarant" name="declarant" class="select_option1">	
+						<option></option><option>于海童</option><option>丛者峰
+						</option></select></td>
+				</tr>
+			</table><br>
+			<table class="table_attach">
+				<tr>
+					<th>订单扫描件</th><th>报关单扫描件</th><th>发票扫描件</th><th>箱单扫描件</th><th>运单/提单扫描件</th><th>运费合同扫描件</th>
+				<tr>
+				<tr>	
+					<td><input type="file" id="SAP_order_attachment" name="upload[]" class="openfile1" accept=".jpg,.png"></td>
+					<td><input type="file" id="declaration_attachment" name="upload[]" class="openfile1" accept=".jpg,.png"></td>
+					<td><input type="file" id="invoice_attachment" name="upload[]" class="openfile1" accept=".jpg,.png"></td>
+					<td><input type="file" id="package_number_attachment" name="upload[]" class="openfile1" accept=".jpg,.png"></td>
+					<td><input type="file" id="shipment_number_attachment" name="upload[]" class="openfile1" accept=".jpg,.png"></td>
+					<td><input type="file" id="shipment_order_attachment" name="upload[]" class="openfile1"  accept=".jpg,.png"></td>
+				</tr>
+			</table>
+		</form>
+		<br><br>
+			
+	</body>
+</html>
